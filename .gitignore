@@ -1,0 +1,15 @@
+# Build output
+dist/
+
+# Astro generated files
+.astro/
+
+# Dependencies
+node_modules/
+
+# Environment files
+.env
+.env.production
+
+# OS files
+.DS_Store
