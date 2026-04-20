@@ -36,6 +36,7 @@ const allProjects = limit ? projects.slice(0, limit) : projects
 const featuredProjects = allProjects.map((project, index) => ({
   ...project,
   featuredImageSrc: project.data.featuredImage || null,
+  featuredImageCardSrc: project.data.featuredImageCard || project.data.featuredImage || null,
   featuredImageFallback: projectImages[index % projectImages.length],
   reverseImg: index % 2 !== 0,
 }))
@@ -57,9 +58,9 @@ const featuredProjects = allProjects.map((project, index) => ({
               aria-hidden="true"
               class:list={['media-wrapper rounded-lg overflow-hidden block', project.reverseImg ? 'md:order-last' : '']}
             >
-              {project.featuredImageSrc ? (
+              {project.featuredImageCardSrc ? (
                 <img
-                  src={project.featuredImageSrc}
+                  src={project.featuredImageCardSrc}
                   alt=""
                   width={690}
                   height={426}

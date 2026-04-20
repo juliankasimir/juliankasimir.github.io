@@ -29,7 +29,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   const projectsWithImages = projects.map((project, index) => {
     return {
       ...project,
-      featuredImage: projectImages[index % projectImages.length],
+      featuredImage: project.data.featuredImageCard || project.data.featuredImage || projectImages[index % projectImages.length],
     }
   })
 
