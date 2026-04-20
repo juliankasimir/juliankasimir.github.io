@@ -8,9 +8,7 @@ import {
 } from 'accessible-astro-launcher'
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
-import { BLOG_API_URL } from 'astro:env/server'
 import themeConfig from '@theme-config'
-import { slugify } from '@utils/slugify'
 
 /**
  * Launcher preferences for accessibility and theme.
@@ -30,23 +28,6 @@ const launcherPreferenceItems = [
     onAction: 'toggle-reduced-motion',
   },
 ]
-
-/**
- * Maximum number of blog posts to show in the launcher.
- * @type {number}
- */
-const maxLauncherBlogPosts = 30
-
-/**
- * Truncate blog post title to the first four words.
- * Used for generating short labels/URLs for launcher items.
- *
- * @param {string} title
- * @returns {string}
- */
-const truncateBlogTitle = (title: string): string => {
-  return title.split(' ').slice(0, 4).join(' ')
-}
 
 /**
  * Project items for the launcher, sourced from the 'projects' collection.
