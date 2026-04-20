@@ -42,4 +42,15 @@ export default defineConfig({
   site: 'https://juliankasimir.github.io',
   integrations: [compress(), icon(), mdx(), sitemap()],
   vite: enhanceConfigForWorkspace(viteConfig),
+  env: {
+    schema: {
+      BLOG_API_URL: {
+        type: 'string',
+        context: 'server',
+        access: 'public',
+        optional: true,
+        default: '',
+      },
+    },
+  },
 })
