@@ -49,38 +49,6 @@ const truncateBlogTitle = (title: string): string => {
 }
 
 /**
- * Blog items for the launcher, fetched from `BLOG_API_URL`.
- * Shows up to `maxLauncherBlogPosts` items.
- *
- * @type {Array<{ label: string, href: string }>}
- */
-const launcherBlogItems = await (async () => {
-  if (!BLOG_API_URL) return []
-
-  try {
-    const response = await fetch(BLOG_API_URL)
-    if (!response.ok) {
-      console.warn(`Failed to fetch blog posts: ${response.status} ${response.statusText}`)
-      return []
-    }
-
-    const data = (await response.json()) as Array<{ title: string }>
-
-    return data.slice(0, maxLauncherBlogPosts).map((post) => {
-      const truncatedTitle = truncateBlogTitle(post.title)
-      const shortUrl = slugify(truncatedTitle)
-
-      return {
-        label: truncatedTitle,
-        href: `/blog/${shortUrl}`,
-      }
-    })
-  } catch {
-    return []
-  }
-})()
-
-/**
  * Project items for the launcher, sourced from the 'projects' collection.
  *
  * @type {Array<{ label: string, href: string, keywords: Array<string> }>}
@@ -155,17 +123,6 @@ const launcherSocialItems = (themeConfig.socials ?? []).map((item) => ({
       ))
     }
   </LauncherNav>
-  {
-    launcherBlogItems.length > 0 && (
-      <LauncherNav label="Blog posts">
-        {launcherBlogItems.map((item) => (
-          <LauncherLink label={item.label} href={item.href}>
-            <Icon slot="icon" aria-hidden="true" name="lucide:scroll-text" size="16" />
-          </LauncherLink>
-        ))}
-      </LauncherNav>
-    )
-  }
   {
     launcherProjectItems.length > 0 && (
       <LauncherNav label="Projects">
