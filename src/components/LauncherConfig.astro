@@ -137,7 +137,7 @@ const launcherSocialItems = (themeConfig.socials ?? []).map((item) => ({
 
 const launcherAccessibleAstroProjects = [
   {
-    label: 'Accessible Astro Starter',
+    label: 'Theme Repository',
     href: 'https://github.com/incluud/accessible-astro-starter',
   },
   {
@@ -206,7 +206,7 @@ const launcherAccessibleAstroProjects = [
   }
   {
     launcherAccessibleAstroProjects.length > 0 && (
-      <LauncherNav label="Accessible Astro Projects">
+      <LauncherNav label="Theme Credits">
         {launcherAccessibleAstroProjects.map((item) => (
           <LauncherLink label={item.label} href={item.href}>
             <Icon slot="icon" aria-hidden="true" name="lucide:external-link" size="16" />

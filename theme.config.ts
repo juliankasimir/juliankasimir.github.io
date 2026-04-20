@@ -1,23 +1,21 @@
 import { defineThemeConfig } from '@utils/defineThemeConfig'
-import previewImage from '@assets/img/social-preview-image.png'
-import logoImage from '@assets/img/logo.svg'
 
 export default defineThemeConfig({
-  name: 'Accessible Astro',
+  name: 'Julian Kasimir',
   id: 'accessible-astro-starter',
-  logo: logoImage,
+  logo: null,
   seo: {
-    title: 'Accessible Astro Starter',
+    title: 'Julian Kasimir',
     description:
-      'An Accessible Starter Theme for Astro including several accessibility features and tools to help you build faster.',
-    author: 'Incluud',
-    image: previewImage, // Can also be a string e.g. '/social-preview-image.png',
+      'Julian Kasimir is a passionate app & web developer.',
+    author: 'Julian Kasimir',
+    image: null,
   },
   colors: {
-    primary: '#d648ff',
-    secondary: '#00d1b7',
-    neutral: '#b9bec4',
-    outline: '#ff4500',
+    primary: '#D9B480',
+    secondary: '#A4BBAF',
+    neutral: '#95948F',
+    outline: '#E66A6A',
   },
   navigation: {
     darkmode: true,
@@ -29,62 +27,17 @@ export default defineThemeConfig({
       },
       {
         type: 'link',
-        label: 'Blog',
-        href: '/blog',
-      },
-      {
-        type: 'link',
-        label: 'Portfolio',
-        href: '/portfolio',
-      },
-      {
-        label: 'Features',
-        type: 'dropdown',
-        items: [
-          {
-            label: 'Accessibility statement',
-            href: '/accessibility-statement',
-          },
-          {
-            label: 'Accessible components',
-            href: '/accessible-components',
-          },
-          {
-            label: 'Accessible launcher',
-            href: '/accessible-launcher',
-          },
-          {
-            label: 'Color contrast checker',
-            href: '/color-contrast-checker',
-          },
-          {
-            label: 'Markdown page',
-            href: '/markdown-page',
-          },
-          {
-            label: 'MDX page',
-            href: '/mdx-page',
-          },
-          {
-            label: '404 page',
-            href: '/404',
-          },
-          {
-            label: 'Sitemap',
-            href: '/sitemap',
-          },
-        ],
-      },
-      {
-        type: 'link',
-        label: 'Contact',
-        href: '/contact',
-      },
-      {
-        type: 'link',
-        label: 'Go to our GitHub page, opens in new tab',
-        href: 'https://github.com/incluud/accessible-astro-starter',
+        label: 'Go to my GitHub profile, opens in new tab',
+        href: 'https://github.com/juliankasimir',
         icon: 'lucide:github',
+        external: true,
+        excludeFromLauncher: true,
+      },
+      {
+        type: 'link',
+        label: 'Go to my LinkedIn profile, opens in new tab',
+        href: 'https://www.linkedin.com/in/juliankasimir/',
+        icon: 'lucide:linkedin',
         external: true,
         excludeFromLauncher: true,
       },
@@ -93,18 +46,8 @@ export default defineThemeConfig({
   socials: [
     {
       label: 'GitHub',
-      href: 'https://github.com/incluud/',
+      href: 'https://github.com/juliankasimir',
       icon: 'lucide:github',
-    },
-    {
-      label: 'Bluesky',
-      href: 'https://bsky.app/profile/incluud.dev',
-      icon: 'lucide:bot-message-square',
-    },
-    {
-      label: 'Open Collective',
-      href: 'https://opencollective.com/incluud',
-      icon: 'lucide:hand-heart',
     },
   ],
 })

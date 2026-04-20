@@ -1,18 +1,8 @@
 ---
 import { Link } from 'accessible-astro-components'
-import { Image } from 'astro:assets'
 import themeConfig from '@theme-config'
 
-/**
- * Logo Component
- *
- * @description Logo description
- */
 interface Props {
-  /**
-   * Whether to load the image eagerly or lazily
-   * @default 'eager'
-   */
   loading?: 'eager' | 'lazy'
 }
 
@@ -20,17 +10,22 @@ const { loading = 'eager' }: Props = Astro.props
 ---
 
 <Link href="/" class="flex items-center gap-2">
-  {
-    themeConfig.logo && (
-      <Image
-        src={themeConfig.logo}
-        alt=""
-        aria-hidden="true"
-        width="47"
-        height="37"
-        loading={loading}
-      />
-    )
-  }
+  <svg
+    aria-hidden="true"
+    focusable="false"
+    width="36"
+    height="28"
+    viewBox="0 0 36 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <text
+      y="22"
+      font-family="system-ui, sans-serif"
+      font-weight="700"
+      font-size="24"
+    ><tspan fill="#537ec5">j</tspan><tspan fill="#537ec5">k</tspan></text>
+    <circle cx="3" cy="6" r="2" fill="#f39422" />  
+  </svg>
   <span class="text-sm font-bold sm:text-lg">{themeConfig.name}</span>
 </Link>

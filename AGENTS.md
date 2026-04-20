@@ -287,6 +287,84 @@ Projects are MDX content in `src/content/projects/`:
 - Real-time contrast ratio calculation
 - Pass/fail indicators for AA and AAA levels
 
+## Image Handling
+
+### Format Convention
+
+All website images **must be in WebP format**. JPG/JPEG files are not used directly.
+
+**When adding or importing images:**
+
+1. Convert JPG/JPEG files to WebP before placing them in `public/`:
+   ```bash
+   cwebp input.jpg -o output.webp
+   # or via sips (macOS):
+   sips -s format webp input.jpg --out output.webp
+   ```
+2. Name the file accordingly (e.g. `ihk_wirpackenmitan.webp`)
+3. Reference the `.webp` path in frontmatter and templates:
+   ```yaml
+   featuredImage: /projects/ihk_wirpackenmitan.webp
+   ```
+
+**Applies to:**
+
+- `public/projects/*.jpg` → convert to `public/projects/*.webp`
+- `public/posts/*.jpg` → convert to `public/posts/*.webp`
+- Any other static image assets served from `public/`
+
+**Rationale:** WebP provides significantly smaller file sizes compared to JPEG while maintaining visual quality, improving page load performance and Core Web Vitals scores.
+
+### Image Dimensions & Specifications
+
+Project featured images are used in two contexts with different sizing requirements. Use a single source image and optimize accordingly.
+
+#### Featured Images for Projects
+
+**Purpose**: Single source image for both homepage carousel and project detail hero
+
+**Dimensions**: `2400px × 1350px` (16:9 aspect ratio, WebP format)
+
+**Specifications**:
+- **Aspect Ratio**: 16:9 (wide, editorial format)
+- **Format**: WebP
+- **File Size Target**: 250–450 KB (balances quality and load performance)
+- **Quality Settings**: 75–85 quality in WebP compression
+- **Color Profile**: sRGB
+
+**Usage**:
+1. **Homepage** (`src/components/FeaturedProjects.astro`): Displayed at 690×426 with `object-cover` crop
+2. **Project Detail Page** (`src/pages/portfolio/[project].astro`): Displayed full-width hero with `object-contain` (max 820px height)
+
+**Best Practices**:
+- **Composition**: Leave center content clear; important elements should not occupy extreme edges (safe area ~90% of width on desktop)
+- **Motif Type**: Landscapes, editorial imagery, or high-contrast graphics work best
+- **Avoid**: Pure portraits (vertical), ultra-wide panoramas, or low-contrast imagery
+- **Text Overlays**: Keep minimal; if text is present, ensure sufficient contrast (4.5:1 WCAG AA minimum)
+
+**File Naming**: `{project-slug}-featured.webp`
+- Example: `drehbuch-12-min-featured.webp`
+- Location: `public/projects/{filename}.webp`
+
+**Frontmatter Reference**:
+```yaml
+---
+title: "Project Title"
+description: "Project description"
+featuredImage: /projects/drehbuch-12-min-featured.webp
+---
+```
+
+**Generation/Export Checklist**:
+- [ ] Image is 2400×1350 px
+- [ ] Exported as WebP
+- [ ] File size is 250–450 KB
+- [ ] Placed in `public/projects/` folder
+- [ ] Filename matches slug pattern
+- [ ] Added to MDX frontmatter with `/projects/` path
+- [ ] Tested on mobile (375px) and desktop (1920px)
+- [ ] Contrast ratio meets 4.5:1 if text present
+
 ## Deployment
 
 This is a **static site** (SSG) that can be deployed anywhere:

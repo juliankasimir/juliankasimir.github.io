@@ -13,6 +13,7 @@ const projects = defineCollection({
     author: z.string(),
     description: z.string(),
     tags: z.array(z.string()).default([]),
+    featuredImage: z.string().optional(),
   }),
 })
 

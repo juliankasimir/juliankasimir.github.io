@@ -18,6 +18,11 @@ interface Props {
    */
   featuredImage?: string
   /**
+   * Controls how the featured image is displayed.
+    * `banner` keeps a fixed-height crop, `full` renders a large editorial hero image.
+   */
+  featuredImageVariant?: 'banner' | 'full'
+  /**
    * The title of the page
    */
   title: string
@@ -63,10 +68,18 @@ const {
   bgType,
   showBreadcrumbs = true,
   featuredImage,
+  featuredImageVariant = 'banner',
   author,
   customBreadcrumbLabels,
   joinLastBreadcrumb = false,
 } = Astro.props
+
+const featuredImageClass =
+  featuredImageVariant === 'full'
+    ? 'featured-image featured-image--full rounded-xl'
+    : 'featured-image featured-image--banner rounded-xl object-contain'
+
+const featuredImageHeight = featuredImageVariant === 'full' ? 1200 : 900
 
 // Helper function to format segment names
 const formatSegment = (segment: string): string => {
@@ -135,26 +148,22 @@ const sanitizedSubtitle: string = subtitle
     <div class="space-content container">
       {
         featuredImage && (
-          <div class="featured-image-container mb-8">
+          <div class:list={[
+            'featured-image-container mb-8',
+            featuredImageVariant === 'banner' ? 'featured-image-container--banner' : 'featured-image-container--full',
+          ]}>
             <Image
               src={featuredImage}
               alt=""
               width={1200}
-              height={250}
-              class="h-[250px] w-full rounded-lg object-cover"
+              height={featuredImageHeight}
+              class={featuredImageClass}
             />
           </div>
         )
       }
       <Heading level="h1">{title}</Heading>
       {sanitizedSubtitle && <p class="text-2xl" set:html={sanitizedSubtitle} />}
-      {
-        author && (
-          <div class="mt-6 flex items-center">
-            <Avatar title={author.name} image={author.image} subtitle={author.bio} />
-          </div>
-        )
-      }
     </div>
   </div>
 </section>
@@ -187,9 +196,39 @@ const sanitizedSubtitle: string = subtitle
       border-inline: 0;
     }
 
-    .featured-image-container {
-      max-height: 500px;
+    .featured-image-container--banner {
+      max-height: none;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
+      background-color: light-dark(var(--color-neutral-100), var(--color-neutral-900));
+      padding: clamp(1rem, 3vw, 2rem);
+      margin: 0 auto;
+      margin-bottom: 2rem;
+    }
+
+    .featured-image-container--full {
+      border-radius: 1rem;
+      background-color: light-dark(var(--color-neutral-100), var(--color-neutral-900));
+      padding: clamp(0.25rem, 1vw, 0.75rem);
+    }
+
+    .featured-image-container--full :global(.featured-image--full) {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: min(72vh, 820px);
+      object-fit: contain;
+    }
+
+    .featured-image-container--banner :global(.featured-image--banner) {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      max-width: 90%;
     }
   }
 </style>

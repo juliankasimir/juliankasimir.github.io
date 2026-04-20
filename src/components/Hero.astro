@@ -1,7 +1,6 @@
 ---
 import { Link } from 'accessible-astro-components'
 import { Icon } from 'astro-icon/components'
-import { Image } from 'astro:assets'
 
 /**
  * Hero Component
@@ -10,12 +9,12 @@ import { Image } from 'astro:assets'
  */
 interface Props {
   /**
-   * The source URL for the image
+   * The source URL for the profile image
    */
-  src?: string
-}
-
-const { src = '/astronaut-hero-img.webp' }: Props = Astro.props
+  imageSrc?: string
+} 
+ 
+const { imageSrc = '/profil.webp' }: Props = Astro.props
 ---
 
 <section class="hero my-24">
@@ -23,32 +22,38 @@ const { src = '/astronaut-hero-img.webp' }: Props = Astro.props
     <div class="grid grid-cols-1 items-center gap-24 lg:grid-cols-2">
       <div class="flex flex-col items-center gap-8 md:items-start">
         <h1 class="text-center text-6xl md:text-left lg:text-8xl">
-          <slot><span class="text-gradient">Accessible</span> Starter for Astro</slot>
+          <slot><span class="text-gradient">Hello World,</span> ich bin Julian.</slot>
         </h1>
-        <div class="flex flex-col gap-3 min-[500px]:flex-row">
+        <p class="max-w-2xl text-center text-2xl md:text-left">
+         Irgendwo zwischen Hessen und Stuttgart groß geworden. Vater &amp; Ideenentwickler. Seit 2004 im Frontend unterwegs. Diese Seite ist mein persönlicher Raum. Für alles Technische gibt es <a href="https://jolution.de" target="_blank" rel="noopener noreferrer" class="underline">Jolution</a>.
+        </p>
+        <div class="hero-actions flex flex-col gap-3 min-[500px]:flex-row">
           <Link
-            href="https://github.com/incluud/accessible-astro-starter"
+            href="https://github.com/juliankasimir"
             isButton
             type="primary"
             animateOnHover
             animationType="boop"
           >
             <Icon aria-hidden="true" name="lucide:star" size="1.5rem" />
-            Star on GitHub
+            GitHub Profil
           </Link>
           <Link
-            href="https://accessible-astro.incluud.dev/"
+            href="https://www.linkedin.com/in/juliankasimir/"
+            isExternal
             isButton
             type="secondary"
             animateOnHover
             animationType="boop"
           >
-            <Icon aria-hidden="true" name="lucide:bookmark" size="1.5rem" />
-            Read the docs
+            <Icon aria-hidden="true" name="lucide:linkedin" size="1.5rem" />
+            LinkedIn
           </Link>
         </div>
       </div>
-      <Image class="hidden lg:block" src={src} alt="" decoding="async" width={800} height={600} loading="eager" />
+      <div class="hero-media hidden lg:block">
+        <img class="w-full max-w-full" src={imageSrc} alt="Portraet von Julian" loading="eager" />
+      </div>
     </div>
   </div>
 </section>
@@ -56,6 +61,14 @@ const { src = '/astronaut-hero-img.webp' }: Props = Astro.props
 <style lang="scss">
   h1 {
     text-wrap: unset;
+  }
+
+  .hero-media {
+    img {
+      block-size: auto;
+      inline-size: min(960px, 100%);
+      max-inline-size: 100%;
+    }
   }
 
   .text-gradient {

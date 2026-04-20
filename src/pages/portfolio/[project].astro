@@ -21,7 +21,7 @@ export async function getStaticPaths() {
   return projects.map((project, index) => {
     const projectWithImage = {
       ...project,
-      featuredImage: projectImages[index % projectImages.length].src,
+      featuredImage: project.data.featuredImage || projectImages[index % projectImages.length].src,
     }
 
     return {
