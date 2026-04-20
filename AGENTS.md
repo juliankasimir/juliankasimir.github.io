@@ -2,15 +2,6 @@
 
 A ready-to-use, SEO and accessibility-focused Astro starter template with blog and portfolio functionality.
 
-## Project Overview
-
-- **Type**: Starter theme (static site / blog / portfolio)
-- **Output Mode**: Static (SSG)
-- **Homepage**: https://accessible-astro-starter.incluud.dev/
-- **Repository**: https://github.com/incluud/accessible-astro-starter
-
-Check `package.json` for current version and all dependencies.
-
 ### Key Dependencies
 
 - `astro` - Framework (Astro 5.x+)
@@ -72,15 +63,6 @@ This project can work with locally linked `accessible-astro-components`:
   - Auto-reload on component changes
   - Filesystem access to parent directories
   - Symlink preservation in Vite
-
-**To link local components**:
-
-```bash
-cd ../accessible-astro-components
-npm link
-cd ../accessible-astro-starter
-npm link accessible-astro-components
-```
 
 ## Code Style Guidelines
 
@@ -326,6 +308,7 @@ Project featured images are used in two contexts with different sizing requireme
 **Dimensions**: `2400px × 1350px` (16:9 aspect ratio, WebP format)
 
 **Specifications**:
+
 - **Aspect Ratio**: 16:9 (wide, editorial format)
 - **Format**: WebP
 - **File Size Target**: 250–450 KB (balances quality and load performance)
@@ -333,29 +316,34 @@ Project featured images are used in two contexts with different sizing requireme
 - **Color Profile**: sRGB
 
 **Usage**:
+
 1. **Homepage** (`src/components/FeaturedProjects.astro`): Displayed at 690×426 with `object-cover` crop
 2. **Project Detail Page** (`src/pages/portfolio/[project].astro`): Displayed full-width hero with `object-contain` (max 820px height)
 
 **Best Practices**:
+
 - **Composition**: Leave center content clear; important elements should not occupy extreme edges (safe area ~90% of width on desktop)
 - **Motif Type**: Landscapes, editorial imagery, or high-contrast graphics work best
 - **Avoid**: Pure portraits (vertical), ultra-wide panoramas, or low-contrast imagery
 - **Text Overlays**: Keep minimal; if text is present, ensure sufficient contrast (4.5:1 WCAG AA minimum)
 
 **File Naming**: `{project-slug}-featured.webp`
+
 - Example: `drehbuch-12-min-featured.webp`
 - Location: `public/projects/{filename}.webp`
 
 **Frontmatter Reference**:
+
 ```yaml
 ---
-title: "Project Title"
-description: "Project description"
+title: 'Project Title'
+description: 'Project description'
 featuredImage: /projects/drehbuch-12-min-featured.webp
 ---
 ```
 
 **Generation/Export Checklist**:
+
 - [ ] Image is 2400×1350 px
 - [ ] Exported as WebP
 - [ ] File size is 250–450 KB
@@ -389,7 +377,7 @@ This is a **static site** (SSG) that can be deployed anywhere:
 
 ### Build Configuration
 
-- Site URL configured in `astro.config.mjs`: `site: 'https://accessible-astro-starter.incluud.dev'`
+- Site URL configured in `astro.config.mjs`
 - Sitemap automatically generated via `@astrojs/sitemap`
 - Compressed HTML output for performance
 

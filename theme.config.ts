@@ -2,7 +2,7 @@ import { defineThemeConfig } from '@utils/defineThemeConfig'
 
 export default defineThemeConfig({
   name: 'Julian Kasimir',
-  id: 'accessible-astro-starter',
+  id: 'juliankasimir.github.io',
   logo: null,
   seo: {
     title: 'Julian Kasimir',
