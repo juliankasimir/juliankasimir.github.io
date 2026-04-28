@@ -4,28 +4,52 @@ import themeConfig from '@theme-config'
 
 interface Props {
   loading?: 'eager' | 'lazy'
+  noLink?: boolean
 }
 
-const { loading = 'eager' }: Props = Astro.props
+const { loading = 'eager', noLink = false }: Props = Astro.props
 ---
 
-<Link href="/" class="flex items-center gap-2">
-  <svg
-    aria-hidden="true"
-    focusable="false"
-    width="36"
-    height="28"
-    viewBox="0 0 36 28"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <text
-      y="22"
-      font-family="system-ui, sans-serif"
-      font-weight="700"
-      font-size="24"
-    ><tspan fill="#537ec5">j</tspan><tspan fill="#537ec5">k</tspan></text>
-    <circle cx="3" cy="6" r="2" fill="#f39422" />  
-  </svg>
-  <span class="text-sm font-bold sm:text-lg">{themeConfig.name}</span>
-</Link>
+{noLink ? (
+  <span class="flex items-center gap-2">
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      width="36"
+      height="28"
+      viewBox="0 0 36 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <text
+        y="22"
+        font-family="system-ui, sans-serif"
+        font-weight="700"
+        font-size="24"
+      ><tspan fill="#537ec5">j</tspan><tspan fill="#537ec5">k</tspan></text>
+      <circle cx="3" cy="6" r="2" fill="#f39422" />
+    </svg>
+    <span class="text-sm font-bold sm:text-lg">{themeConfig.name}</span>
+  </span>
+) : (
+  <Link href="/" class="flex items-center gap-2">
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      width="36"
+      height="28"
+      viewBox="0 0 36 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <text
+        y="22"
+        font-family="system-ui, sans-serif"
+        font-weight="700"
+        font-size="24"
+      ><tspan fill="#537ec5">j</tspan><tspan fill="#537ec5">k</tspan></text>
+      <circle cx="3" cy="6" r="2" fill="#f39422" />
+    </svg>
+    <span class="text-sm font-bold sm:text-lg">{themeConfig.name}</span>
+  </Link>
+)}

@@ -34,7 +34,7 @@ const launcherPreferenceItems = [
  *
  * @type {Array<{ label: string, href: string, keywords: Array<string> }>}
  */
-const launcherProjectItems = (await getCollection('projects')).map((project) => ({
+const launcherProjectItems = (await getCollection('projects', ({ data }) => !data.draft)).map((project) => ({
   label: project.data.title,
   href: `/portfolio/${project.id}`,
   keywords: [project.data.author, ...project.data.tags],

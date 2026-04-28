@@ -34,19 +34,6 @@ const { url = Astro.url.href } = Astro.props
   </li>
   <li>
     <Link
-      href={`https://x.com/share?url=${encodeURIComponent(url)}`}
-      isButton
-      isExternal
-      hideIcon
-      animateOnHover
-      animationType="boop"
-    >
-      <Icon aria-hidden="true" name="lucide:twitter" size={32} />
-      <span class="sr-only">Share on Twitter, opens in a new tab</span>
-    </Link>
-  </li>
-  <li>
-    <Link
       href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`}
       isButton
       isExternal

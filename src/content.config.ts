@@ -15,6 +15,7 @@ const projects = defineCollection({
     tags: z.array(z.string()).default([]),
     featuredImage: z.string().optional(),
     featuredImageCard: z.string().optional(),
+    draft: z.boolean().default(false),
   }),
 })
 

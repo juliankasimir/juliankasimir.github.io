@@ -8,7 +8,7 @@ import type { CollectionEntry } from 'astro:content'
 import { slugify } from '@utils/slugify'
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const projects = await getCollection('projects')
+  const projects = await getCollection('projects', ({ data }) => !data.draft)
   const allTags = projects.map((project) => project.data.tags).flat()
   const uniqueTagLabels = [...new Set(allTags)].sort((a, b) => a.localeCompare(b))
   const uniqueTags = uniqueTagLabels.map((label) => ({

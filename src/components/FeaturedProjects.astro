@@ -27,8 +27,8 @@ interface Props {
 
 const { class: className, limit, title = 'Meine Projekte' } = Astro.props
 
-// Get projects from content collection
-const projects = await getCollection('projects')
+// Get projects from content collection (exclude drafts)
+const projects = await getCollection('projects', ({ data }) => !data.draft)
 const projectImages = ['/projects/project-image-1.png', '/projects/project-image-2.png', '/projects/project-image-3.png']
 
 // Show all projects (or limited amount) and add featured images
@@ -46,7 +46,7 @@ const featuredProjects = allProjects.map((project, index) => ({
   <div class="container">
     <Heading level="h2" class="mb-16">{title}</Heading>
     <p class="mb-12 text-lg">
-      Die technischen Projekte findet ihr auf <Link href="https://jolution.de/" isExternal>jolution.de</Link>.
+      Die technischen Projekte findet ihr auf <Link href="https://jolution.com/de" isExternal>jolution.com/de</Link>.
     </p>
     <div class="flex flex-col gap-32">
       {

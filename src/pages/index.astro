@@ -29,7 +29,10 @@ import { Heading, Link } from 'accessible-astro-components'
   </section>
   <section class="my-64">
     <div class="container">
-      <Heading level="h2" class="mb-8">Über mich in 9 Dingen</Heading>
+      <Heading level="h2" class="mb-8">
+        <span class="md:hidden">Julian in 3 Dingen</span>
+        <span class="hidden md:inline">Über mich in 9 Dingen</span>
+      </Heading>
       <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
         <Feature icon="lucide:target" title="Tennis">
           Ich spiele regelmäßig Tennis, weil ich Fokus, Timing und Fair Play liebe.
@@ -40,24 +43,26 @@ import { Heading, Link } from 'accessible-astro-components'
         <Feature icon="lucide:code" title="Side Projects">
           Ich teste ständig neue Ideen in kleinen Projekten und lerne am liebsten hands-on.
         </Feature>
-        <Feature icon="lucide:lightbulb" title="Neugier">
-          Mich motiviert es, komplexe Themen einfach zu machen und verständlich zu erklären.
-        </Feature>
-        <Feature icon="lucide:users" title="Teamplay">
-          Ich arbeite gerne mit anderen zusammen, teile Wissen offen und bringe Struktur in gemeinsame Arbeit.
-        </Feature>
-        <Feature icon="lucide:book-open" title="Lernen">
-          Kontinuierliches Lernen gehört für mich dazu, von neuen Tools bis zu besseren Workflows.
-        </Feature>
-        <Feature icon="lucide:rocket" title="Umsetzung">
-          Ich mag pragmatische Lösungen, die schnell Nutzen bringen und trotzdem sauber gebaut sind.
-        </Feature>
-        <Feature icon="lucide:map-pin" title="Balance">
-          Zwischen Arbeit, Sport und Alltag suche ich bewusst eine gute Balance statt Dauerstress.
-        </Feature>
-        <Feature icon="lucide:heart" title="Haltung">
-          Mir sind Respekt, Verlässlichkeit und ein freundlicher Umgang wichtig.
-        </Feature>
+        <div class="hidden md:contents">
+          <Feature icon="lucide:lightbulb" title="Neugier">
+            Mich motiviert es, komplexe Themen einfach zu machen und verständlich zu erklären.
+          </Feature>
+          <Feature icon="lucide:users" title="Teamplay">
+            Ich arbeite gerne mit anderen zusammen, teile Wissen offen und bringe Struktur in gemeinsame Arbeit.
+          </Feature>
+          <Feature icon="lucide:book-open" title="Lernen">
+            Kontinuierliches Lernen gehört für mich dazu, von neuen Tools bis zu besseren Workflows.
+          </Feature>
+          <Feature icon="lucide:rocket" title="Umsetzung">
+            Ich mag pragmatische Lösungen, die schnell Nutzen bringen und trotzdem sauber gebaut sind.
+          </Feature>
+          <Feature icon="lucide:map-pin" title="Balance">
+            Zwischen Arbeit, Sport und Alltag suche ich bewusst eine gute Balance statt Dauerstress.
+          </Feature>
+          <Feature icon="lucide:heart" title="Haltung">
+            Mir sind Respekt, Verlässlichkeit und ein freundlicher Umgang wichtig.
+          </Feature>
+        </div>
       </div>
     </div>
   </section>
@@ -67,7 +72,7 @@ import { Heading, Link } from 'accessible-astro-components'
       Alles rund um Webentwicklung, eigene Apps und digitale Services läuft unter meiner anderen Brand. Dort findest du
       meine professionellen Projekte, Dienstleistungen und mehr.
     </p>
-    <Link isExternal isButton href="https://jolution.de" type="primary" animateOnHover animationType="boop">
+    <Link isExternal isButton href="https://jolution.com/de" type="primary" animateOnHover animationType="boop">
       Zu Jolution
     </Link>
   </ContentMedia>
